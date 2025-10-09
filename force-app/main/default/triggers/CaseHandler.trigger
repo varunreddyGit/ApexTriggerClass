@@ -1,3 +1,3 @@
-trigger CaseHandler on SOBJECT (before insert) {
+trigger CaseHandler on Case (before insert) {
 
 }
