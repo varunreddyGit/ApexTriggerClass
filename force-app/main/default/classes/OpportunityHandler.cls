@@ -26,4 +26,7 @@ public class OpportunityHandler {
         update accountToUpdate;
     }
     }
- }
+//When any Opportunity is created with amount populated or OpportunityAmount is updated then populate 
+//total Amount on Account Level for allrelated opportunities in Annual Revenue Field. If opportunity is
+//deleted or undeleted then update Amount on Account as well.
+}
