@@ -8,4 +8,31 @@ public class AccountHandler {
             }
         }
     }
+// Populate Account Billing Address to shipping Address while inserting an Account
+    public static void populateAddress(List<Account> accList){
+        for(Account acc : accList){
+            if(acc.BillingStreet !=null || acc.BillingCity != null || acc.BillingState != null
+                                        || acc.BillingPostalCode != null || acc.BillingCountry != null){
+                acc.ShippingStreet = acc.BillingStreet;
+                acc.ShippingCity = acc.BillingCity;
+                acc.ShippingState = acc.BillingState;
+                acc.ShippingPostalCode = acc.BillingPostalCode;
+                acc.ShippingCountry = acc.BillingCountry;
+            }
+        }
+    }
+// Whenever New Account Record is created then needs to create associated Contact Record automatically.
+    public static void accToContact(List<Account> accList){
+        List<Contact> insertCon = new List<Contact>();
+        for(Account acc : acclist){
+            Contact  con = new Contact();
+            con.FirstName = 'Varun';
+            con.LastName = acc.Name;
+            con.AccountId = acc.Id;
+            insertCon.add(con);
+        }
+        if(!insertCon.isEmpty()){
+            insert insertCon;
+        }
+    }
 }
