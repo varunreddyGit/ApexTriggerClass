@@ -30,9 +30,28 @@ public class AccountHandler {
             con.LastName = acc.Name;
             con.AccountId = acc.Id;
             insertCon.add(con);
-        }
+        }   
         if(!insertCon.isEmpty()){
             insert insertCon;
+        }
+    }
+//Creates the number of contacts which are equal to the number which we will enter in the Number of Locations 
+//field on the Account Object.
+    public static void createMulCons(List<Account> accList){
+        List<Contact> conAccount = new List<Contact>();
+        for(Account acc : accList){
+            if(acc.Number_of_Locations__c != null && acc.Number_of_Locations__c > 0){
+                Integer numberOfContacts = Integer.valueOf(acc.Number_of_Locations__c);
+                for(Integer i = 1; i <= acc.Number_of_Locations__c; i++){
+                    Contact con = new Contact();
+                    con.LastName = acc.Name + i;
+                    con.AccountId = acc.Id;
+                    conAccount.add(con);
+                }
+            }
+        }
+        if(!conAccount.isEmpty()){
+            insert conAccount;
         }
     }
 }

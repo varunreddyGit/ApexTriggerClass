@@ -8,8 +8,7 @@ public class OpportunityHandler {
     Map<Id, Decimal> accIdToOppAmount = new Map<Id, Decimal>();
     //Query the latest opportunity amount for each account
     List<Opportunity> oppList = [SELECT Id, AccountId, Amount, CreatedDate FROM 
-                 Opportunity WHERE AccountId IN : accountIds ORDER BY CreatedDate DESC];
-    
+                 Opportunity WHERE AccountId IN : accountIds ORDER BY CreatedDate DESC];   
     //Track latest account
     for(Opportunity opp : oppList){
         if(!accIdToOppAmount.containsKey(opp.AccountId)){
